@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
+import Header from "./Header"
 import { getTodos, deleteTodo } from "./api";
 
 function App() {
@@ -23,18 +24,21 @@ function App() {
   }, []);
 
   return (
-    <div className="container mt-4">
-      <TodoForm
-        selectedTodo={selectedTodo}
-        onSave={loadTodos}
-      />
+    <>
+      <Header />
+      <div className="container mt-4">
+        <TodoForm
+          selectedTodo={selectedTodo}
+          onSave={loadTodos}
+        />
 
-      <TodoList
-        todos={todos}
-        onEdit={setSelectedTodo}
-        onDelete={handleDelete}
-      />
-    </div>
+        <TodoList
+          todos={todos}
+          onEdit={setSelectedTodo}
+          onDelete={handleDelete}
+        />
+      </div>
+    </>
   );
 }
 
